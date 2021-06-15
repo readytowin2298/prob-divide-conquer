@@ -5,7 +5,7 @@
 
 function countZeroes(arr) {
     // Find first 0 
-    let first = binaryIndex0(arr)
+    let first = findFirstI(arr)
 
     // Return 0 if no 0 is found
     if (first === -1) return 0
@@ -14,7 +14,7 @@ function countZeroes(arr) {
     return arr.length - first;
 }
 
-function binaryIndex0(arr, low = 0, high = arr.length - 1) {
+function findFirstI(arr, low = 0, high = arr.length - 1) {
     // Catch if no 0 is found
     if (high >= low) {
     
@@ -22,9 +22,9 @@ function binaryIndex0(arr, low = 0, high = arr.length - 1) {
         if ((mid === 0 || arr[mid - 1] === 1) && arr[mid] === 0) {
             return mid;
         } else if (arr[mid] === 1) {
-            return binaryIndex0(arr, mid + 1, high)
+            return findFirstI(arr, mid + 1, high)
         }
-        return binaryIndex0(arr, low, mid - 1)
+        return findFirstI(arr, low, mid - 1)
         }
     return -1;
   }
